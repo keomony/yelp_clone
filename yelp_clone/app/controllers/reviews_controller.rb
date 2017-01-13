@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = @restaurant.build_review(review_params, current_user)
 
     if @review.save
-      redirect_to restaurants_path
+      redirect_to "#{restaurants_path}/#{@restaurant.id}"
     else
       if @review.errors[:user]
         redirect_to restaurants_path, alert: "You have already reviewed this restaurant"
